@@ -26,7 +26,7 @@ Kwik-E-Mart es una aplicación que se encargara de tratar de solventar el mercad
 ![](https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/img/leanCanvas.jpg)
 
 # Hisorias de Usuario
-![](https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/Historias%20de%20Usuario.pdf)
+[Historias de Usuario](https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/Historias%20de%20Usuario.pdf)
 
 # Diagrama de Clases
 ![](https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/img/DiagramaClases.jpg)
