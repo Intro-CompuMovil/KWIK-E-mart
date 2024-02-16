@@ -30,3 +30,6 @@ Kwik-E-Mart es una aplicación que se encargara de tratar de solventar el mercad
 
 # Diagrama de Clases
 ![](https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/img/DiagramaClases.jpg)
+
+# Documnetacion Completa 
+[Documnetacion Inicia] (https://github.com/Intro-CompuMovil/KWIK-E-mart/blob/main/DOC/KWIK-E-MART.pdf)
