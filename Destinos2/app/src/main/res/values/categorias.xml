@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="Categorias">
+        <item>Todos</item>
+        <item>Quimicos</item>
+        <item>Productos</item>
+        <item>Limpieza</item>
+    </string-array>
+</resources>
