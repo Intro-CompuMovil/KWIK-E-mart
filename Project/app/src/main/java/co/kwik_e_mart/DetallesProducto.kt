@@ -1,4 +1,4 @@
-package com.example.destinos
+package co.kwik_e_mart
 
 import android.content.Intent
 import android.os.Bundle

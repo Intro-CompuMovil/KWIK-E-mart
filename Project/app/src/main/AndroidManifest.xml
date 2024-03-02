@@ -13,6 +13,15 @@
         android:theme="@style/Theme.KWIKEmart"
         tools:targetApi="31">
         <activity
+            android:name=".ListaCompra"
+            android:exported="false" />
+        <activity
+            android:name=".DetallesProducto"
+            android:exported="false" />
+        <activity
+            android:name=".ProductoList"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
