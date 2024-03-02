@@ -1,4 +1,4 @@
-package com.example.destinos
+package co.kwik_e_mart
 
 import androidx.lifecycle.ViewModel
 import android.util.Log
