@@ -12,6 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KWIKEmart"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0"
+            />
+
+        <activity
+            android:name=".GpS"
+            android:exported="false" />
         <activity
             android:name=".ListaCompra"
             android:exported="false" />
