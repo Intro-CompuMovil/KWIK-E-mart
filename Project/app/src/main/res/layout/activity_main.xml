@@ -18,7 +18,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonExplorar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Explorar Productos"
@@ -29,14 +29,14 @@
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonListaCompra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lista De Compra"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="311dp"
         android:layout_centerInParent="true"
-        android:layout_below="@id/button"/>
+        android:layout_below="@id/buttonExplorar"/>
 
 
 </RelativeLayout>

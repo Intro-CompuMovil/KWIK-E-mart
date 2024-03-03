@@ -11,38 +11,37 @@ import android.widget.Spinner
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var dataManager: DataManager
+    private lateinit var spinner: Spinner
+    private val listaCompra = mutableListOf<Productos>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        dataManager = DataManager(this)
+        spinner = findViewById(R.id.spinner)
+        // Cargar productos agregados
+        listaCompra.addAll(dataManager.cargarListaCompra())
 
-        val BUTTDestiny = findViewById<Button>(R.id.button)
-        val BUTTlistaCompra = findViewById<Button>(R.id.button2)
-        val Spinner = findViewById<Spinner>(R.id.spinner)
-
-        Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedItem = parent.getItemAtPosition(position).toString()
-
-                Log.d("Spinner", "Item seleccionado: $selectedItem")
-                Log.d("Actividad1", "Valor seleccionado: $selectedItem")
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Se llama cuando no se ha seleccionado ningún elemento.
-            }
+        // Exlorar productos
+        val btnExplorar = findViewById<Button>(R.id.buttonExplorar)
+        btnExplorar.setOnClickListener {
+            //Obtener el valor del spinner
+            val catergoria = spinner.selectedItem.toString()
+            //Crear el intent
+            val intent = Intent(this, ProductoList::class.java)
+            intent.putExtra("categoria", catergoria)
+            // Iniciar el intent
+            startActivity(intent)
         }
 
-        BUTTDestiny.setOnClickListener{
-            val selectedItem = Spinner.selectedItem.toString()
-            Log.d("Mandado", selectedItem)
-            val intentDestiny = Intent(this,ProductoList::class.java)
-            intentDestiny.putExtra("llave", selectedItem)
-            startActivity(intentDestiny)
-        }
-
-        BUTTlistaCompra.setOnClickListener{
-            val intentListaCompras = Intent(this,ListaCompra::class.java)
-            startActivity(intentListaCompras)
+        //Boton para ver la lista de compra
+        val btnListaCompra = findViewById<Button>(R.id.buttonListaCompra)
+        btnListaCompra.setOnClickListener {
+            //Abrir la lista de favoritos
+            val intent = Intent(this, ListaCompra::class.java)
+            startActivity(intent)
         }
     }
 }
+

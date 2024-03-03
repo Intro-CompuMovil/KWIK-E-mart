@@ -5,28 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_centerInParent="true">
+    <TextView
+        android:id="@+id/nombreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/PrecioTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Precio:"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/CategoriasTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cateforia:"
+        android:layout_centerInParent="true"/>
+    </LinearLayout>
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/Carrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/linearLayout"
         android:text="Incluir a Carrito" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/Return"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/button5"
+        android:layout_below="@+id/Carrito"
         android:text="Volver a Lista de Productos" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="TextView"
-        android:layout_centerInParent="true"/>
 </RelativeLayout>
