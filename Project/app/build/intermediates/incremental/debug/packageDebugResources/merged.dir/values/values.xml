@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Categorias">
+        <item>Todos</item>
+        <item>Quimicos</item>
+        <item>Productos</item>
+        <item>Limpieza</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">KWIK-E-mart</string>
+    <style name="Base.Theme.KWIKEmart" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.KWIKEmart" parent="Base.Theme.KWIKEmart"/>
+</resources>

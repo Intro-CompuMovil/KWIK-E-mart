@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:entries="@array/Categorias"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="422dp" />
+
+
+
+    <Button
+        android:id="@+id/buttonExplorar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Explorar Productos"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="261dp"
+        android:layout_below="@id/spinner"
+        android:layout_centerInParent="true"
+        />
+
+    <Button
+        android:id="@+id/buttonListaCompra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista De Compra"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="311dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/buttonExplorar"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,158 @@
+[
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_activity_listacompra.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/activity_listacompra.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/drawable_ic_launcher_foreground.jpg.flat",
+        "source": "co.kwik_e_mart.app-main-36:/drawable/ic_launcher_foreground.jpg"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxhdpi/ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher_foreground_foreground.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxxhdpi/ic_launcher_foreground_foreground.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_activity_gp_s.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/activity_gp_s.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-mdpi_ic_launcher_foreground_foreground.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-mdpi/ic_launcher_foreground_foreground.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-anydpi/ic_launcher.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-anydpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_activity_detallesdestino.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/activity_detallesdestino.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher_foreground_round.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-anydpi-v26/ic_launcher_foreground_round.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_activity_destinoexplorelist.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/activity_destinoexplorelist.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-hdpi_ic_launcher_foreground_foreground.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-hdpi/ic_launcher_foreground_foreground.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-mdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-mdpi/ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xhdpi_ic_launcher_foreground_foreground.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xhdpi/ic_launcher_foreground_foreground.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/xml_data_extraction_rules.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/raw_productos.json.flat",
+        "source": "co.kwik_e_mart.app-main-36:/raw/productos.json"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xhdpi/ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-hdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-hdpi/ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/drawable_ic_launcher_background.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxhdpi_ic_launcher_foreground_foreground.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxhdpi/ic_launcher_foreground_foreground.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxxhdpi/ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/layout_item_carrito.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/layout/item_carrito.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/xml_backup_rules.xml.flat",
+        "source": "co.kwik_e_mart.app-main-36:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "co.kwik_e_mart.app-merged_res-34:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "co.kwik_e_mart.app-main-36:/mipmap-xxhdpi/ic_launcher_round.webp"
+    }
+]
