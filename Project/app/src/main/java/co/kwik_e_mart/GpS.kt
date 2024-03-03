@@ -31,9 +31,9 @@ class GpS : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun createMarker() {
-        val coordinates = LatLng(4.692866, -74.033141)
-        val coordinates2 = LatLng(4.695775, -74.032155)
-        val coordinates3 = LatLng(4.693977, -74.034135)
+        val coordinates = LatLng(4.628075, -74.064728)
+        val coordinates2 = LatLng(4.628256, -74.065366)
+        val coordinates3 = LatLng(4.627319, -74.065322)
         val mains = LatLng(4.6287662, -74.0636298647595)
 
         val marker = MarkerOptions().position(coordinates).title("Domiciliario: 1")
