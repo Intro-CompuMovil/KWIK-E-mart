@@ -50,7 +50,7 @@ class ProductosList : AppCompatActivity() {
     }
 
     private fun loadProducts(products: List<Productos>) {
-        productAdapter = ProductAdapter(products)
+        productAdapter = ProductAdapter(products, dataManager, carritoList = dataManager.cargarListaCompra())
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ProductosList)
             adapter = productAdapter

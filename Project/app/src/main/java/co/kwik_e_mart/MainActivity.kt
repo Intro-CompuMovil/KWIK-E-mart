@@ -28,15 +28,15 @@ class MainActivity : AppCompatActivity() {
         dataManager = DataManager(this)
         categorySpinner = findViewById(R.id.categorySpinner)
 
-        // Cargar el arreglo de categoria desde los recursos
+        // Cargar el arreglo de categoría desde los recursos
         val categories = resources.getStringArray(R.array.Categorias)
 
-        // Configurar el adaptador con el arreglo de categorias
+        // Configurar el adaptador con el arreglo de categorías
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, categories)
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_1)
         categorySpinner.adapter = adapter
 
-        // Establecer el escuchador de seleccion del spinner
+        // Establecer el escuchador de selección del spinner
         categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 // Aquí puedes actualizar tu RecyclerView basado en la selección categories[position]
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         // Configurar SearchView
         setupProfileButton()
         setupCartButton()
+
     }
 
     private fun setupProfileButton() {
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupCartButton() {
         binding.btnCarrito.setOnClickListener {
-            //Implementacion de la logica del carrito
+            // Implementación de la lógica del carrito
             startActivity(Intent(this, ListaCompra::class.java))
         }
     }
@@ -78,11 +79,14 @@ class MainActivity : AppCompatActivity() {
             dataManager.cargarProductosSeleccionado(category)
         }
 
-        // Suponiendo que tienes un RecyclerView llamado productsRecyclerView y un adaptador
+        // Inicializar la lista de productos del carrito
+        val carritoList = dataManager.cargarListaCompra()
+
         val recyclerView = findViewById<RecyclerView>(R.id.productRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        // Suponiendo que tienes un adaptador que toma una lista de productos como parámetro
-        val adapter = ProductAdapter(filteredProducts.toMutableList())
+
+        // Crear el adaptador y pasar las listas filtradas y la lista del carrito
+        val adapter = ProductAdapter(filteredProducts.toMutableList(), dataManager, carritoList)
         recyclerView.adapter = adapter
     }
 }

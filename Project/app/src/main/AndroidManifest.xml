@@ -16,7 +16,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0"
             />
-
         <activity
             android:name=".GpS"
             android:exported="false" />
@@ -25,9 +24,6 @@
             android:exported="false" />
         <activity
             android:name=".DetallesProducto"
-            android:exported="false" />
-        <activity
-            android:name=".ProductoList"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

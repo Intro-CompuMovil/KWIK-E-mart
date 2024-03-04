@@ -26,4 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"/>
+
+    <!-- Boton agregar al carrito -->
+    <Button
+        android:id="@+id/btnAgregarCarrito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Agregar a Carrito"
+        android:padding="8dp"
+        />
 </LinearLayout>

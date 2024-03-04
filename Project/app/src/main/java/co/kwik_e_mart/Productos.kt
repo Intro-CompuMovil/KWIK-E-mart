@@ -7,7 +7,8 @@ data class Productos(
     val id: Int,
     val nombre: String?,
     val precio: Int,
-    val categoria: String?
+    val categoria: String?,
+
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
