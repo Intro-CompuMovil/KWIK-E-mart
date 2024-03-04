@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.utils.`is`
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -33,6 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    viewBinding.isEnabled=true
 }
 
 dependencies {
@@ -47,4 +50,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     //Nuecas importaciones
     implementation("com.google.code.gson:gson:2.10")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }

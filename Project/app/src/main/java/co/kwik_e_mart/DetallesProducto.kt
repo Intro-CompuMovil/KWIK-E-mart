@@ -14,7 +14,6 @@ class DetallesProducto : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detallesdestino)
-        dataManager.initFile()
         //Obtener el producto Seleccionado del intent
         val producto: Productos = intent.getParcelableExtra("producto") ?: return
         //Obtener los detalles del producto del DataManager

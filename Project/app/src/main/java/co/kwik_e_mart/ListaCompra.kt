@@ -24,8 +24,8 @@ class ListaCompra: AppCompatActivity() {
         dataManager = DataManager(this)
         listView = findViewById(R.id.listViewCarrito)
         //Obtener la lista de productosCarrito
-        val carritoCompra = dataManager.cargarListaCompra()
-        //Generar el adaptador
+        val carritoCompra = dataManager.cargarListaCompra().toMutableList()
+        // Generar el adaptador
         val adapter = CarritoAdapter(this, carritoCompra, dataManager)
         listView.adapter = adapter
     }
