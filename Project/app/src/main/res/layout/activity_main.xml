@@ -6,37 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:entries="@array/Categorias"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="422dp" />
-
-
-
-    <Button
-        android:id="@+id/buttonExplorar"
+    <!-- Parte superior con perfil, carrito y buscador -->
+    <LinearLayout
+        android:id="@+id/topContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Explorar Productos"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="261dp"
-        android:layout_below="@id/spinner"
-        android:layout_centerInParent="true"
-        />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/buttonListaCompra"
+        <!-- Botón de perfil en la esquina superior izquierda -->
+        <ImageButton
+            android:id="@+id/btnPerfil"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_gps"
+            android:contentDescription="Perfil" />
+
+        <!-- Carrito de compras en la parte superior derecha-->
+        <ImageButton
+            android:id="@+id/btnCarrito"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_carrito" />
+
+        <!-- Barra de búsqueda -->
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+
+    <!-- Parte inferior con la lista de productos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lista De Compra"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="311dp"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/buttonExplorar"/>
-
+        android:layout_below="@id/topContainer"
+        android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/topContainer" />
 
 </RelativeLayout>

@@ -2,38 +2,58 @@ package co.kwik_e_mart
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-class ProductoList : AppCompatActivity(){
+class ProductosList : AppCompatActivity() {
 
-    private val dataManager = DataManager(this)
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var categorySpinner: Spinner
+    private lateinit var searchView: SearchView
+    private lateinit var dataManager: DataManager
+    private lateinit var productAdapter: ProductAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_destinoexplorelist)
+        setContentView(R.layout.activity_main)
 
-        val listView: ListView = findViewById(R.id.listView)
-        val categorias = intent.getStringExtra("categoria") ?: ""
+        recyclerView = findViewById(R.id.productRecyclerView)
+        categorySpinner = findViewById(R.id.categorySpinner)
+        dataManager = DataManager(this)
 
-        // Verificacion
-        val productos = if (categorias == "Todos"){
-            dataManager.cargarProductos()
-        } else {
-            dataManager.cargarProductosSeleccionado(categorias)
-        }
+        setupCategorySpinner()
+        loadProducts(dataManager.cargarProductos())
+    }
 
-        val adapter =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, productos.map { it.nombre })
-        listView.adapter = adapter
+    private fun setupCategorySpinner() {
+        val categories = resources.getStringArray(R.array.Categorias)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        categorySpinner.adapter = adapter
 
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val productosSeleccionado = productos[position]
-            val intent = Intent(this, DetallesProducto::class.java).apply {
-                putExtra("producto", productosSeleccionado)
+        categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val category = categories[position]
+                val filteredProducts = if (category == "Todos") {
+                    dataManager.cargarProductos()
+                } else {
+                    dataManager.cargarProductosSeleccionado(category)
+                }
+                loadProducts(filteredProducts)
             }
-            startActivity(intent)
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
     }
 
+    private fun loadProducts(products: List<Productos>) {
+        productAdapter = ProductAdapter(products, dataManager, carritoList = dataManager.cargarListaCompra())
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@ProductosList)
+            adapter = productAdapter
+        }
+    }
 }

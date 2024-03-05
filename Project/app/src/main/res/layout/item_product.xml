@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- item_product.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,31 +10,30 @@
         android:id="@+id/nombreTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/precioTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:textAppearance="?android:textAppearanceSmall"
+        android:layout_marginBottom="4dp"/>
 
     <TextView
         android:id="@+id/categoriaTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp" />
+        android:textAppearance="?android:textAppearanceSmall"/>
 
+    <!-- Boton agregar al carrito -->
     <Button
-        android:id="@+id/btnEliminar"
+        android:id="@+id/btnAgregarCarrito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar" />
-
-    <Button
-        android:id="@+id/btnFotografia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fotografía" />
-
+        android:layout_gravity="end"
+        android:text="Agregar a Carrito"
+        android:padding="8dp"
+        />
 </LinearLayout>
