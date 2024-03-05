@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:text="Eliminar" />
 
+    <Button
+        android:id="@+id/btnFotografia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fotografía" />
+
 </LinearLayout>

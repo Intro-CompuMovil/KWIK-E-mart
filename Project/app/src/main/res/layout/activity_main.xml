@@ -19,7 +19,7 @@
             android:id="@+id/btnPerfil"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_perfil"
+            android:src="@drawable/ic_gps"
             android:contentDescription="Perfil" />
 
         <!-- Carrito de compras en la parte superior derecha-->

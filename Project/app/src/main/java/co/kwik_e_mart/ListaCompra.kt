@@ -1,6 +1,7 @@
 package co.kwik_e_mart
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,6 +52,7 @@ class CarritoAdapter(context: Context, private var carritos: MutableList<Product
         categoriaTextView.text = "Categoria: ${carrito.categoria}"
 
         val btnEliminar = listaCompraView.findViewById<Button>(R.id.btnEliminar)
+        val btnFotografia = listaCompraView.findViewById<Button>(R.id.btnFotografia)
 
         // Configurar el clic del boton eliminar
         btnEliminar.setOnClickListener {
@@ -60,6 +62,11 @@ class CarritoAdapter(context: Context, private var carritos: MutableList<Product
             dataManager.guardarProductoCarrito(carritos)
             // Notificar al adaptador sobre el cambio en los datos
             notifyDataSetChanged()
+        }
+
+        btnFotografia.setOnClickListener {
+            val intent = Intent(context, CamaraPermisos::class.java)
+            context.startActivity(intent)
         }
         return listaCompraView
     }

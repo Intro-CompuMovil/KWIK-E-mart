@@ -51,15 +51,22 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Configurar SearchView
-        setupProfileButton()
+        //setupProfileButton()
+        setupGpsButton()
         setupCartButton()
 
     }
 
-    private fun setupProfileButton() {
+    /*private fun setupProfileButton() {
         binding.btnPerfil.setOnClickListener {
             // Implementa la lógica para el botón de perfil aquí
             Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()
+        }
+    }*/
+
+    private fun setupGpsButton() {
+        binding.btnPerfil.setOnClickListener {
+            startActivity(Intent(this, GpS::class.java))
         }
     }
 
