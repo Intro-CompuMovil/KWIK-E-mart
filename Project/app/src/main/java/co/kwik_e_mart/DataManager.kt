@@ -5,8 +5,10 @@ import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStreamReader
 import java.lang.reflect.Type
+
 
 class DataManager(private val context: Context) {
 
@@ -16,10 +18,9 @@ class DataManager(private val context: Context) {
     init {
         productos = cargarProductosJSON()
     }
-
     fun init() {
         // Método init() para inicializar el DataManager
-        cargarProductosJSON()
+        cargarListaCompra()
     }
 
     fun obtenerDetalles(id: Int): Productos? {
@@ -51,10 +52,24 @@ class DataManager(private val context: Context) {
     }
 
     fun cargarListaCompra(): List<Productos> {
+        val carritoCompraFile = File(context.filesDir, "productoCompra.json")
 
-        val carritoCompraJson = context.openFileInput("productoCompra.json")?.use {
-            BufferedReader(InputStreamReader(it)).readText()
-        } ?: ""
+        // Si el archivo no existe, lo crea
+        if (!carritoCompraFile.exists()) {
+            try {
+                carritoCompraFile.createNewFile()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        val carritoCompraJson = try {
+            carritoCompraFile.readText()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ""
+        }
+
         val tipoLista: Type = object : TypeToken<List<Productos>>() {}.type
         return try {
             gson.fromJson(carritoCompraJson, tipoLista) ?: mutableListOf()
