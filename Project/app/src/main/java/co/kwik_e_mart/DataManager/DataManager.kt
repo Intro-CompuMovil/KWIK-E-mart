@@ -1,12 +1,12 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.DataManager
 
 import android.content.Context
+import co.kwik_e_mart.Gerente.Productos
+import co.kwik_e_mart.R
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
-import java.io.BufferedReader
 import java.io.File
-import java.io.InputStreamReader
 import java.lang.reflect.Type
 
 

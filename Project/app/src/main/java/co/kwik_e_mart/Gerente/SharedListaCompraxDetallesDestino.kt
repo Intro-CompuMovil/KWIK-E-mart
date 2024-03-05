@@ -1,4 +1,4 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.Gerente
 
 import androidx.lifecycle.ViewModel
 import android.util.Log

@@ -1,4 +1,4 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.Gerente
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.R
 
 class ProductAdapter(private val productList: List<Productos>,
                      private var dataManager: DataManager,

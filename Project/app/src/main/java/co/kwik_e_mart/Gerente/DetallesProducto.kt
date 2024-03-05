@@ -1,4 +1,4 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.Gerente
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.R
 
 
 class DetallesProducto : AppCompatActivity(){

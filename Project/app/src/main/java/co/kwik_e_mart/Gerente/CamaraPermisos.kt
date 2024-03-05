@@ -1,4 +1,4 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.Gerente
 
 import android.Manifest
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import co.kwik_e_mart.R
 
 
 class CamaraPermisos : AppCompatActivity() {

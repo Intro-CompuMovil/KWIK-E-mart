@@ -20,7 +20,7 @@
         android:theme="@style/Theme.KWIKEmart"
         tools:targetApi="31">
         <activity
-            android:name=".CamaraPermisos"
+            android:name=".Gerente.CamaraPermisos"
             android:exported="false" />
 
         <meta-data
@@ -28,16 +28,16 @@
             android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0" />
 
         <activity
-            android:name=".GpS"
+            android:name=".Gerente.GpS"
             android:exported="false" />
         <activity
-            android:name=".ListaCompra"
+            android:name=".Gerente.ListaCompra"
             android:exported="false" />
         <activity
-            android:name=".DetallesProducto"
+            android:name=".Gerente.DetallesProducto"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Gerente.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

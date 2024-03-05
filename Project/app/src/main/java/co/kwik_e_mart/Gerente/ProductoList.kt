@@ -1,12 +1,13 @@
-package co.kwik_e_mart
+package co.kwik_e_mart.Gerente
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.R
 
 class ProductosList : AppCompatActivity() {
 
