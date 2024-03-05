@@ -51,6 +51,7 @@ class DataManager(private val context: Context) {
     }
 
     fun cargarListaCompra(): List<Productos> {
+
         val carritoCompraJson = context.openFileInput("productoCompra.json")?.use {
             BufferedReader(InputStreamReader(it)).readText()
         } ?: ""
