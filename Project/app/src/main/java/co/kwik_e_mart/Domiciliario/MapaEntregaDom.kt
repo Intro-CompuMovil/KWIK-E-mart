@@ -22,7 +22,6 @@ import android.widget.EditText
 import android.widget.Toast
 import co.kwik_e_mart.R
 import org.osmdroid.bonuspack.routing.OSRMRoadManager
-
 import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.views.overlay.MapEventsOverlay
@@ -30,6 +29,8 @@ import java.util.*
 import org.osmdroid.bonuspack.routing.RoadManager
 import org.osmdroid.bonuspack.routing.Road
 import org.osmdroid.views.overlay.Polyline
+import kotlin.collections.ArrayList
+
 class MapaEntregaDom : AppCompatActivity() {
 
     private companion object {
@@ -41,11 +42,16 @@ class MapaEntregaDom : AppCompatActivity() {
     private var currentMarker: Marker? = null
     private var roadManager: RoadManager? = null
     private lateinit var addressInput: EditText
+    private var currentLocation: GeoPoint? = null
+    private var addressToSearch: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Configuration.getInstance().load(applicationContext, androidx.preference.PreferenceManager.getDefaultSharedPreferences(applicationContext))
         setContentView(R.layout.activity_gp_s)
+
+        // Get address from intent
+        val address = intent.getStringExtra("direccion") ?: ""
 
         addressInput = findViewById(R.id.addressInput)
 
@@ -60,81 +66,42 @@ class MapaEntregaDom : AppCompatActivity() {
             }
             return@setOnEditorActionListener false
         }
-
+        addressInput.isEnabled = false
         requestLocationPermission()
-        setupMap()
+        setupMap(address)
         roadManager = OSRMRoadManager(this)
     }
 
-    private fun searchAddress(address: String) {
+    private fun setupMap(address: String ) {
+        map = findViewById(R.id.map)
+        map?.apply {
+            setTileSource(TileSourceFactory.MAPNIK)
+            setBuiltInZoomControls(true)
+            setMultiTouchControls(true)
+            controller.setZoom(15.0)
+            invalidate()
+        }
+        addMyLocationOverlay()
+        addMapLongClickListener()
+
         if (address.isNotEmpty()) {
-            val geocoder = Geocoder(this, Locale.getDefault())
-            try {
-                val addresses = geocoder.getFromLocationName(address, 1)
-                if (addresses != null && addresses.isNotEmpty()) {
-
-                    map!!.overlays.forEach {
-                        if (it is Marker) {
-                            map!!.overlays.remove(it)
-                        }
-                    }
-
-                    val location = addresses[0]
-                    val latitude = location.latitude
-                    val longitude = location.longitude
-                    val geoPoint = GeoPoint(latitude, longitude)
-
-                    // Center the map on the address
-                    map?.controller?.setCenter(geoPoint)
-
-                    // Make a marker on the address
-                    val marker = Marker(map)
-                    marker.position = geoPoint
-                    marker.title = address
-                    map?.overlays?.add(marker)
-
-                    // Remove previous road if exists
-                    map!!.overlays.forEach {
-                        if (it is Polyline) {
-                            map!!.overlays.remove(it)
-                        }
-                    }
-
-                    // Execute the network operation in a background thread
-                    GetRoadTask().execute(myLocationOverlay!!.myLocation, geoPoint)
-
-                } else {
-                    Toast.makeText(this, "Address not found", Toast.LENGTH_SHORT).show()
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Toast.makeText(this, "Error searching address", Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            Toast.makeText(this, "Please enter an address", Toast.LENGTH_SHORT).show()
+            addressToSearch = address
         }
     }
 
-    private fun setupMap() {
-        map = findViewById(R.id.map)
-        map!!.setTileSource(TileSourceFactory.MAPNIK)
-        map!!.setBuiltInZoomControls(true)
-        map!!.setMultiTouchControls(true)
-        map!!.controller.setZoom(15.0)
-        map!!.invalidate()
-        addMyLocationOverlay()
-        addMapLongClickListener()
-    }
     private fun addMyLocationOverlay() {
         myLocationOverlay = MyLocationNewOverlay(map)
-        map!!.overlays.add(myLocationOverlay)
-        myLocationOverlay!!.enableMyLocation()
+        map?.overlays?.add(myLocationOverlay)
+        myLocationOverlay?.enableMyLocation()
 
-        myLocationOverlay!!.runOnFirstFix {
-            val location = myLocationOverlay!!.myLocation
+        myLocationOverlay?.runOnFirstFix {
+            val location = myLocationOverlay?.myLocation
             if (location != null) {
+                currentLocation = location
                 runOnUiThread {
-                    map!!.controller.setCenter(location)
+                    map?.controller?.setCenter(location)
+                    addressInput.isEnabled = true
+                    addressToSearch?.let { searchAddress(it) }
                 }
             } else {
                 runOnUiThread {
@@ -143,48 +110,112 @@ class MapaEntregaDom : AppCompatActivity() {
             }
         }
     }
+
+    private fun searchAddress(address: String) {
+        if (currentLocation != null) {
+            if (address.isNotEmpty()) {
+                val geocoder = Geocoder(this, Locale.getDefault())
+                try {
+                    val addresses = geocoder.getFromLocationName(address, 1)
+                    if (addresses != null && addresses.isNotEmpty()) {
+                        map?.let { map ->
+                            map.overlays.forEach {
+                                if (it is Marker) {
+                                    map.overlays.remove(it)
+                                }
+                            }
+
+                            val location = addresses[0]
+                            val latitude = location.latitude
+                            val longitude = location.longitude
+                            val geoPoint = GeoPoint(latitude, longitude)
+
+                            // Center the map on the address
+                            map.controller.setCenter(geoPoint)
+
+                            // Make a marker on the address
+                            val marker = Marker(map)
+                            marker.position = geoPoint
+                            marker.title = address
+                            map.overlays.add(marker)
+
+                            // Remove previous road if exists
+                            map.overlays.filterIsInstance<Polyline>().forEach {
+                                map.overlays.remove(it)
+                            }
+
+                            // Execute the network operation in a background thread
+                            GetRoadTask().execute(currentLocation, geoPoint)
+
+                        }
+
+                    } else {
+                        Toast.makeText(this, "Address not found", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    Toast.makeText(this, "Error searching address", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(this, "Please enter an address", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            // Si la ubicación actual no está disponible, muestra un mensaje al usuario para que espere
+            Toast.makeText(this, "Waiting to get current location", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun addMapLongClickListener() {
         val mapEventsOverlay = MapEventsOverlay(object : MapEventsReceiver {
             override fun singleTapConfirmedHelper(p: GeoPoint): Boolean {
                 return false
             }
+
             override fun longPressHelper(p: GeoPoint): Boolean {
-                if (currentMarker != null) {
-                    map!!.overlays.remove(currentMarker)
+                currentMarker?.let {
+                    map?.overlays?.remove(it)
                 }
 
                 currentMarker = Marker(map)
-                currentMarker!!.position = p
-                currentMarker!!.title = getAddressFromLatLng(this@MapaEntregaDom, p)
-                currentMarker!!.icon = ContextCompat.getDrawable(this@MapaEntregaDom, android.R.drawable.star_big_on)
-                map!!.overlays.add(currentMarker)
-
-                // Remove previous road if exists
-                map!!.overlays.forEach {
-                    if (it is Polyline) {
-                        map!!.overlays.remove(it)
-                    }
+                currentMarker?.apply {
+                    position = p
+                    title = getAddressFromLatLng(this@MapaEntregaDom, p)
+                    icon = ContextCompat.getDrawable(this@MapaEntregaDom, android.R.drawable.star_big_on)
                 }
 
-                // Execute the network operation in a background thread
-                GetRoadTask().execute(myLocationOverlay!!.myLocation, p)
+                map?.overlays?.add(currentMarker)
+
+                map?.overlays?.filterIsInstance<Polyline>()?.forEach {
+                    map?.overlays?.remove(it)
+                }
+
+                myLocationOverlay?.myLocation?.let { myLocation ->
+                    // Execute the network operation in a background thread
+                    GetRoadTask().execute(myLocation, p)
+                } ?: run {
+                    Toast.makeText(this@MapaEntregaDom, "Unable to get current location", Toast.LENGTH_SHORT).show()
+                }
 
                 return true
             }
         })
 
-        map!!.overlays.add(0, mapEventsOverlay)
+        map?.overlays?.add(0, mapEventsOverlay)
     }
 
     // AsyncTask to perform network operation in background
-    private inner class GetRoadTask : AsyncTask<GeoPoint, Void, Road>() {
-        override fun doInBackground(vararg params: GeoPoint): Road? {
+    private inner class GetRoadTask : AsyncTask<GeoPoint?, Void, Road>() {
+        override fun doInBackground(vararg params: GeoPoint?): Road? {
             val startPoint = params[0]
             val endPoint = params[1]
-            val roadManager = OSRMRoadManager(this@MapaEntregaDom)
-            return roadManager.getRoad(
-                ArrayList(listOf(startPoint, endPoint))
-            )
+            if (startPoint != null) {
+                val roadManager = OSRMRoadManager(this@MapaEntregaDom)
+                return roadManager.getRoad(
+                    ArrayList(listOf(startPoint, endPoint))
+                )
+            } else {
+                return null
+            }
         }
 
         override fun onPostExecute(result: Road?) {
@@ -194,8 +225,8 @@ class MapaEntregaDom : AppCompatActivity() {
                     roadOverlay.setPoints(result.mRouteHigh)
                     roadOverlay.color = Color.BLUE
                     roadOverlay.width = 5.0f
-                    map!!.overlayManager.add(roadOverlay)
-                    map!!.invalidate()
+                    map?.overlayManager?.add(roadOverlay)
+                    map?.invalidate()
                 } else {
                     Toast.makeText(this@MapaEntregaDom, "Error calculating road", Toast.LENGTH_SHORT).show()
                 }
