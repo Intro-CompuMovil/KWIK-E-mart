@@ -25,7 +25,7 @@
             android:text="Admin info" />
 
         <ImageButton
-            android:id="@+id/botonListaEntregas"
+            android:id="@+id/botonListaProductos"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@android:drawable/star_big_on" />

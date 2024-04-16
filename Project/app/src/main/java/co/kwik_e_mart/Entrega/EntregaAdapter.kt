@@ -20,7 +20,6 @@ class EntregaAdapter(private val mensajeroList: List<Entregas>) :
         val productosTextView: TextView = itemView.findViewById(R.id.ProductosTextView)
         val direccionTextView: TextView = itemView.findViewById(R.id.DireccionTextView)
         val btnaceptar: Button = itemView.findViewById(R.id.btnElegirTarea)
-        val btnrechzar: Button = itemView.findViewById(R.id.btnRechazarTarea)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourierViewHolder {

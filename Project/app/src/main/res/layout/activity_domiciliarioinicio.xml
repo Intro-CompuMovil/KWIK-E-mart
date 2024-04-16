@@ -29,17 +29,17 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars"
+        android:layout_width="99dp"
+        android:layout_height="97dp"
         android:layout_below="@id/topContainer"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/amogus" />
 
     <TextView
         android:id="@+id/textViewNombreDom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Paquito Perez"
+        android:text="Nombre: Paquito Perez"
         android:layout_below="@id/imageView"
         android:gravity="center"
         android:textSize="30sp"/>
@@ -48,7 +48,7 @@
         android:id="@+id/textViewCalificacionDom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="5.0"
+        android:text="Calificacion: 5.0"
         android:layout_below="@id/textViewNombreDom"
         android:gravity="center"
         android:textSize="30sp"/>
@@ -57,7 +57,7 @@
         android:id="@+id/textViewPrecioDom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="50.000"
+        android:text="Precio Promedio: 50.000"
         android:layout_below="@id/textViewCalificacionDom"
         android:gravity="center"
         android:textSize="30sp"/>

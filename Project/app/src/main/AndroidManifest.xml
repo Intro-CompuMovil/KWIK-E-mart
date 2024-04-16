@@ -36,6 +36,14 @@
             android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0" />
 
         <activity
+            android:name=".Gerente.InfoGerente"
+            android:exported="false" />
+
+        <activity
+            android:name=".Gerente.ListaProductosGerente"
+            android:exported="false" />
+
+        <activity
             android:name=".Gerente.DomiciliarioElegido"
             android:exported="false" />
 
