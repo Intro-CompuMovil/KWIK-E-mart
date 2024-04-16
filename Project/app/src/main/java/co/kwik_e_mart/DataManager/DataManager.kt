@@ -26,7 +26,7 @@ class DataManager(private val context: Context) {
 
     init {
         mensajeros = cargarProductosJSONMensajero()
-        Log.d("GerenteInicio", "Tamaño de la lista de mensajeros cargados: ${mensajeros.size}")
+        Log.d("Mensajeros Iniciados", "Tamaño de la lista de mensajeros cargados: ${mensajeros.size}")
     }
 
     init {
@@ -37,6 +37,7 @@ class DataManager(private val context: Context) {
         // Método init() para inicializar el DataManager
         cargarListaCompra()
     }
+
 
     fun obtenerDetalles(id: Int): Productos? {
         return productos.find { it.id == id }

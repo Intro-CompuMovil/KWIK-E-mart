@@ -24,7 +24,7 @@ class MensajeroList: AppCompatActivity() {
     }
 
     private fun loadMensajeros(couriers: List<Mensajeros>) {
-        mensajeroAdapter = MensajeroAdapter(couriers, dataManager, courierList = dataManager.cargarListaMensajeros())
+        mensajeroAdapter = MensajeroAdapter(couriers)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@MensajeroList)
             adapter = mensajeroAdapter

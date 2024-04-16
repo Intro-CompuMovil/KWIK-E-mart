@@ -6,22 +6,22 @@ import android.os.Parcelable
 data class Mensajeros(
     val id: Int,
     val nombre: String?,
-    val calificacion: Int,
-    val preciopromedio: Int,
+    val calificacion: Double,
+    val preciopromedio: Double,
 
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString(),
-        parcel.readInt(),
-        parcel.readInt()
+        parcel.readDouble(),
+        parcel.readDouble()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
         parcel.writeString(nombre)
-        parcel.writeInt(calificacion)
-        parcel.writeInt(preciopromedio)
+        parcel.writeDouble(calificacion)
+        parcel.writeDouble(preciopromedio)
     }
 
     override fun describeContents(): Int {

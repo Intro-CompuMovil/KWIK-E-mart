@@ -28,6 +28,10 @@
             android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0" />
 
         <activity
+            android:name=".Gerente.DomiciliarioElegido"
+            android:exported="false" />
+
+        <activity
             android:name=".Domiciliario.ListaEntregas"
             android:exported="false" />
 
