@@ -51,6 +51,9 @@
             android:name=".Domiciliario.ListaEntregas"
             android:exported="false" />
 
+        <activity android:name=".Domiciliario.MapaEntregaDom"
+            android:exported="false" />
+
         <activity
             android:name=".Domiciliario.DomiciliarioInicio"
             android:exported="false" />
