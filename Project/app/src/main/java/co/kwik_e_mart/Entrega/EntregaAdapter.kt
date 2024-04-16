@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import co.kwik_e_mart.Domiciliario.MapaEntregaDom
 import co.kwik_e_mart.Gerente.DomiciliarioElegido
 import co.kwik_e_mart.R
 
@@ -40,7 +41,10 @@ class EntregaAdapter(private val mensajeroList: List<Entregas>) :
         holder.btnaceptar.apply {
 
             setOnClickListener {
-                Toast.makeText(it.context, "Productos ${currentItem.productos}", Toast.LENGTH_SHORT).show()
+                val address = currentItem.direccion
+                val intent = Intent(it.context, MapaEntregaDom::class.java)
+                intent.putExtra("direccion", address)
+                it.context.startActivity(intent)
             }
         }
     }
