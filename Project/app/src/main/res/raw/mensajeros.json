@@ -1,0 +1,7 @@
+[
+    {"id": 1, "nombre": "Javier Useche", "calificacion": 5, "preciopromedio": 20000},
+    {"id": 2, "nombre": "Juan Useche", "calificacion": 4.8, "preciopromedio": 25000},
+    {"id": 3, "nombre": "Jorge Useche", "calificacion": 3.2, "preciopromedio": 22000},
+    {"id": 4, "nombre": "Jesus Useche", "calificacion": 4.5, "preciopromedio": 10000},
+    {"id": 5, "nombre": "Javier Acosta", "calificacion": 5, "preciopromedio": 30000}
+  ]

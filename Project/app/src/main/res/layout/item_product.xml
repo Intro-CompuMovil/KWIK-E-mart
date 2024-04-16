@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/nombreTextView"
+        android:id="@+id/courierNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceMedium"
@@ -15,14 +15,14 @@
         android:layout_marginBottom="4dp"/>
 
     <TextView
-        android:id="@+id/precioTextView"
+        android:id="@+id/calificacionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"
         android:layout_marginBottom="4dp"/>
 
     <TextView
-        android:id="@+id/categoriaTextView"
+        android:id="@+id/preciopromedioTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:textAppearanceSmall"/>

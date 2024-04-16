@@ -1,4 +1,4 @@
-package co.kwik_e_mart.Gerente
+package co.kwik_e_mart.User
 
 import android.Manifest
 import android.content.Intent

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/topContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/botonListaEntregas"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@android:drawable/star_big_on" />
+
+        <TextView
+            android:id="@+id/textViewListaEntregas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de Entregas" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_below="@id/topContainer"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/textViewNombreDom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Paquito Perez"
+        android:layout_below="@id/imageView"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/textViewCalificacionDom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5.0"
+        android:layout_below="@id/textViewNombreDom"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/textViewPrecioDom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="50.000"
+        android:layout_below="@id/textViewCalificacionDom"
+        android:gravity="center"
+        android:textSize="30sp"/>
+
+
+</RelativeLayout>

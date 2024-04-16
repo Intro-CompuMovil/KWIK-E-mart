@@ -1,4 +1,4 @@
-package co.kwik_e_mart.Gerente
+package co.kwik_e_mart.Productos
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.Productos.ProductAdapter
 import co.kwik_e_mart.R
 
 class ProductosList : AppCompatActivity() {
@@ -19,7 +20,7 @@ class ProductosList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_userinicio)
 
         recyclerView = findViewById(R.id.productRecyclerView)
         categorySpinner = findViewById(R.id.categorySpinner)

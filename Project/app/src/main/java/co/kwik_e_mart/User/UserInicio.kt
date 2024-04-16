@@ -1,4 +1,4 @@
-package co.kwik_e_mart.Gerente
+package co.kwik_e_mart.User
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,19 +11,20 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.Productos.ProductAdapter
 import co.kwik_e_mart.R
-import co.kwik_e_mart.databinding.ActivityMainBinding
+import co.kwik_e_mart.databinding.ActivityUserinicioBinding
 
 
-class MainActivity : AppCompatActivity() {
+class UserInicio : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityUserinicioBinding
     private lateinit var dataManager: DataManager
     private lateinit var categorySpinner: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityUserinicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         dataManager = DataManager(this)
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         categorySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 // Aquí puedes actualizar tu RecyclerView basado en la selección categories[position]
-                Toast.makeText(this@MainActivity, "Seleccionado: ${categories[position]}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@UserInicio, "Seleccionado: ${categories[position]}", Toast.LENGTH_SHORT).show()
                 // Llama a una función para actualizar el RecyclerView
                 updateRecyclerViewBasedOnCategory(categories[position])
             }

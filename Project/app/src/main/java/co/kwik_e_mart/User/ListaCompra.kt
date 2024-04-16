@@ -1,4 +1,4 @@
-package co.kwik_e_mart.Gerente
+package co.kwik_e_mart.User
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,7 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.Productos.Productos
 import co.kwik_e_mart.R
 
 class ListaCompra: AppCompatActivity() {
@@ -43,9 +44,9 @@ class CarritoAdapter(context: Context, private var carritos: MutableList<Product
         val carrito = carritos[position]
 
         // Obtener referencias a las vistas de item_carrito.xml
-        val nombreTextView = listaCompraView!!.findViewById<TextView>(R.id.nombreTextView)
-        val precioTextView = listaCompraView.findViewById<TextView>(R.id.precioTextView)
-        val categoriaTextView = listaCompraView.findViewById<TextView>(R.id.categoriaTextView)
+        val nombreTextView = listaCompraView!!.findViewById<TextView>(R.id.courierNameTextView)
+        val precioTextView = listaCompraView.findViewById<TextView>(R.id.calificacionTextView)
+        val categoriaTextView = listaCompraView.findViewById<TextView>(R.id.preciopromedioTextView)
 
         //Establecer los datos del carrito en las vistas
         nombreTextView.text = carrito.nombre

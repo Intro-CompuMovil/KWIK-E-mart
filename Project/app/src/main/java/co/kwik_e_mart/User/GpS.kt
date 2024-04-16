@@ -1,4 +1,4 @@
-package co.kwik_e_mart.Gerente
+package co.kwik_e_mart.User
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

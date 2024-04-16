@@ -1,0 +1,7 @@
+[
+    {"id": 1, "productos": "A-B-C-D", "direccion": "Javeriana"},
+    {"id": 2, "productos": "E-F-G-H", "direccion": "Externado"},
+    {"id": 3, "productos": "I-J-K-L", "direccion": "Universidad Nacional"},
+    {"id": 4, "productos": "M-N-O-P", "direccion": "Salitre Magico"},
+    {"id": 5, "productos": "Q-R-S-T", "direccion": "Plaza Simon Bolivar"}
+]

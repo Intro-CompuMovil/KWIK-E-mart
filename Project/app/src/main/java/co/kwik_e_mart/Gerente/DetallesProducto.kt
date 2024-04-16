@@ -7,7 +7,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.Productos.Productos
 import co.kwik_e_mart.R
+import co.kwik_e_mart.User.UserInicio
 
 
 class DetallesProducto : AppCompatActivity(){
@@ -38,13 +40,13 @@ class DetallesProducto : AppCompatActivity(){
         //Configurar el boton para regresar al main
         val btnReturn: Button = findViewById(R.id.Return)
         btnReturn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, UserInicio::class.java)
             startActivity(intent)
         }
     }
 
     private fun actualizarInterfazUsuario(detallesProducto: Productos){
-        findViewById<TextView>(R.id.nombreTextView).text = "Nomrbre: ${detallesProducto.nombre}"
+        findViewById<TextView>(R.id.courierNameTextView).text = "Nomrbre: ${detallesProducto.nombre}"
         findViewById<TextView>(R.id.PrecioTextView).text = "Precio: ${detallesProducto.precio} $"
         findViewById<TextView>(R.id.CategoriasTextView).text = "Categoria: ${detallesProducto.categoria}"
     }
