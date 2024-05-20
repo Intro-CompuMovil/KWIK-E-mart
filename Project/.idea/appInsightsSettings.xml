@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="co.kwik_e_mart" />
+                  <option name="mobileSdkAppId" value="1:548644363626:android:ef9fc7f45d6338523c1913" />
+                  <option name="projectId" value="kwik-e-mart-5dd66" />
+                  <option name="projectNumber" value="548644363626" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

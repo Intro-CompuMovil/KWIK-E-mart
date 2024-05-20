@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "548644363626",
+    "firebase_url": "https://kwik-e-mart-5dd66-default-rtdb.firebaseio.com",
+    "project_id": "kwik-e-mart-5dd66",
+    "storage_bucket": "kwik-e-mart-5dd66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548644363626:android:ef9fc7f45d6338523c1913",
+        "android_client_info": {
+          "package_name": "co.kwik_e_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvGH4pTsu_ExENvTn5q3cy9qQxzMoZ3O0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

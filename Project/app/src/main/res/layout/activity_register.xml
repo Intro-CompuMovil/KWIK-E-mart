@@ -6,104 +6,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_login"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
-    <!-- Logo ImageView -->
-    <ImageView
-        android:id="@+id/imageViewLogo"
-        android:layout_width="159dp"
-        android:layout_height="182dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_kaamercologo" />
-
-    <!-- App Name TextView -->
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="KamerCO"
-        android:textSize="36sp"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
-
-    <!-- Username EditText -->
+    <!-- Nombre de Usuario -->
     <EditText
-        android:id="@+id/editTextTextUsername"
+        android:id="@+id/editTextRegisterUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
+        android:layout_marginTop="32dp"
         android:hint="Username"
         android:inputType="text"
         android:padding="16dp"
         android:background="@drawable/rounded_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Password EditText -->
+    <!-- Correo Electrónico -->
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextRegisterEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterUsername" />
+
+    <!-- Contraseña -->
+    <EditText
+        android:id="@+id/editTextRegisterPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="16dp"
         android:background="@drawable/rounded_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextTextUsername" />
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterEmail" />
 
-    <!-- Login Button -->
-    <Button
-        android:id="@+id/buttonLogin"
+    <!-- Confirmar Contraseña -->
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="16dp"
-        android:text="Login"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:textColor="@android:color/white"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@id/editTextRegisterPassword" />
 
-    <!-- Register Button -->
-    <Button
-        android:id="@+id/buttonRegister"
+    <!-- Tipo de Usuario -->
+    <Spinner
+        android:id="@+id/spinnerUserType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/user_types"
+        android:background="@drawable/rounded_edittext"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextConfirmPassword" />
+
+    <!-- Botón de Registro -->
+    <Button
+        android:id="@+id/buttonRegisterUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
         android:text="Register"
         android:backgroundTint="@android:color/holo_green_dark"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@id/spinnerUserType" />
 
-    <!-- Crash Button for Testing Crashlytics
-    <Button
-        android:id="@+id/crashButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Crash"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
--->
 </androidx.constraintlayout.widget.ConstraintLayout>
