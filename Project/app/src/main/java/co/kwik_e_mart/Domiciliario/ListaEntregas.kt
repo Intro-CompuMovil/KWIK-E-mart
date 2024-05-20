@@ -1,14 +1,11 @@
 package co.kwik_e_mart.Domiciliario
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.kwik_e_mart.Entrega.EntregaAdapter
+import co.kwik_e_mart.Entrega.NewProductAdapter
 import co.kwik_e_mart.Entrega.Entregas
-import co.kwik_e_mart.Mensajero.MensajeroAdapter
-import co.kwik_e_mart.Mensajero.Mensajeros
 import co.kwik_e_mart.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -36,8 +33,7 @@ class ListaEntregas: AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.deliverRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = EntregaAdapter(entregasCargador.toMutableList())
-        recyclerView.adapter = adapter
+
     }
 
 }

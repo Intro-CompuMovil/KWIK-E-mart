@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +23,39 @@ class UserInicio : AppCompatActivity() {
     private lateinit var dataManager: DataManager
     private lateinit var categorySpinner: Spinner
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserinicioBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val producto1 = intent.getStringExtra("producto1")
+        val producto2 = intent.getStringExtra("producto2")
+        val producto3 = intent.getStringExtra("producto3")
+        val producto4 = intent.getStringExtra("producto4")
+        val producto5 = intent.getStringExtra("producto5")
+
+        var paqueteProductosTextView = findViewById<TextView>(R.id.carrito)
+
+
+        if (producto1 == null){
+            paqueteProductosTextView.text = "Paquete sin Productos"
+        }
+
+        else if (producto2 == null){
+            paqueteProductosTextView.text = "$producto1"
+        }
+
+        else if (producto3 == null){
+            paqueteProductosTextView.text = "$producto1 - $producto2"
+        }
+
+        else if (producto4 == null){
+            paqueteProductosTextView.text = "$producto1 - $producto2 - $producto3"
+        }
+
+        else
+            paqueteProductosTextView.text = "$producto1 - $producto2 - $producto3 - $producto4 - $producto5"
 
         dataManager = DataManager(this)
         categorySpinner = findViewById(R.id.categorySpinner)

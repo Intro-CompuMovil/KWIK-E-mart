@@ -6,20 +6,20 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/courierNameTextView"
+        android:id="@+id/productoNombreCarrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/calificacionTextView"
+        android:id="@+id/productoPrecioCarrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/preciopromedioTextView"
+        android:id="@+id/productoCategoriaCarrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp" />
@@ -29,11 +29,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Eliminar" />
-
-    <Button
-        android:id="@+id/btnFotografia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fotografía" />
 
 </LinearLayout>

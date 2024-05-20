@@ -9,43 +9,48 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import co.kwik_e_mart.Domiciliario.MapaEntregaDom
-import co.kwik_e_mart.Gerente.DomiciliarioElegido
+import co.kwik_e_mart.Gerente.Carrito
+import co.kwik_e_mart.Productos.Productos
 import co.kwik_e_mart.R
 
-class EntregaAdapter(private val mensajeroList: List<Entregas>) :
+class NewProductAdapter(private val productList: List<Productos>, private val p1TextView: TextView) :
 
-    RecyclerView.Adapter<EntregaAdapter.CourierViewHolder>() {
+    RecyclerView.Adapter<NewProductAdapter.NewProductViewHolder>() {
 
     // ViewHolder para contener las vistas de cada elemento de la lista
-    class CourierViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productosTextView: TextView = itemView.findViewById(R.id.ProductosTextView)
-        val direccionTextView: TextView = itemView.findViewById(R.id.DireccionTextView)
-        val btnaceptar: Button = itemView.findViewById(R.id.btnElegirTarea)
+    class NewProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val nombreProducto: TextView = itemView.findViewById(R.id.ProductoNameTextView)
+        val precioProducto: TextView = itemView.findViewById(R.id.ProductoPrecioTextView)
+        val categoriaProducto: TextView = itemView.findViewById(R.id.ProductoCategoriaTextView)
+        val btnAdd: Button = itemView.findViewById(R.id.btnAdd)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourierViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewProductViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_entrega, parent, false)
-        return CourierViewHolder(itemView)
+            .inflate(R.layout.item_addproduct, parent, false)
+        return NewProductViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: CourierViewHolder, position: Int) {
-        val currentItem = mensajeroList[position]
+    override fun onBindViewHolder(holder: NewProductViewHolder, position: Int) {
+        val currentItem = productList[position]
 
         // Asignar los valores del producto a las vistas correspondientes
-        holder.productosTextView.text = currentItem.productos
-        holder.direccionTextView.text = "Direccion: ${currentItem.direccion}"
+        holder.nombreProducto.text = currentItem.nombre
+        holder.precioProducto.text = currentItem.precio.toString()
+        holder.categoriaProducto.text = currentItem.categoria
+
 
         // Configurar el clic del botón "Agregar al carrito"
-        holder.btnaceptar.apply {
-
-            setOnClickListener {
-                val address = currentItem.direccion
-                val intent = Intent(it.context, MapaEntregaDom::class.java)
-                intent.putExtra("direccion", address)
-                it.context.startActivity(intent)
+        holder.btnAdd.setOnClickListener {
+            val context = it.context
+            val intent = Intent(context, Carrito::class.java).apply {
+                putExtra("id", currentItem.id)
+                putExtra("nombre", currentItem.nombre)
+                putExtra("precio", currentItem.precio)
+                putExtra("categoria", currentItem.categoria)
             }
+            context.startActivity(intent)
         }
     }
-    override fun getItemCount() = mensajeroList.size
+    override fun getItemCount() = productList.size
 }

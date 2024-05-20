@@ -54,7 +54,6 @@ class CarritoAdapter(context: Context, private var carritos: MutableList<Product
         categoriaTextView.text = "Categoria: ${carrito.categoria}"
 
         val btnEliminar = listaCompraView.findViewById<Button>(R.id.btnEliminar)
-        val btnFotografia = listaCompraView.findViewById<Button>(R.id.btnFotografia)
 
         // Configurar el clic del boton eliminar
         btnEliminar.setOnClickListener {
@@ -66,10 +65,7 @@ class CarritoAdapter(context: Context, private var carritos: MutableList<Product
             notifyDataSetChanged()
         }
 
-        btnFotografia.setOnClickListener {
-            val intent = Intent(context, CamaraPermisos::class.java)
-            context.startActivity(intent)
-        }
+
         return listaCompraView
     }
 }

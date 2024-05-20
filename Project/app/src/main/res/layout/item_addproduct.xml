@@ -6,22 +6,28 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/ProductosTextView"
+        android:id="@+id/ProductoNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/DireccionTextView"
+        android:id="@+id/ProductoPrecioTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/ProductoCategoriaTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp" />
 
     <Button
-        android:id="@+id/btnElegirTarea"
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aceptar" />
+        android:text="Add" />
 
 </LinearLayout>
