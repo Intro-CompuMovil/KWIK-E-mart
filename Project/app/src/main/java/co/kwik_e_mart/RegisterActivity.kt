@@ -7,11 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import co.kwik_e_mart.Gerente.GerenteInicio
+import co.kwik_e_mart.Domiciliario.DomiciliarioInicio
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -19,10 +17,12 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        // Initialize Firebase
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
@@ -66,6 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                         db.collection("users").document(userId).set(userMap)
                             .addOnSuccessListener {
                                 Log.d("Register", "DocumentSnapshot successfully written!")
+                                Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
                                 navigateToHome(userType)
                             }
                             .addOnFailureListener { e ->
@@ -87,12 +88,17 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             "Domiciliario" -> {
-                val intent = Intent(this, co.kwik_e_mart.Domiciliario.DomiciliarioInicio::class.java)
+                val intent = Intent(this, DomiciliarioInicio::class.java)
                 startActivity(intent)
             }
             else -> {
                 Toast.makeText(this, "Unknown user type", Toast.LENGTH_SHORT).show()
             }
         }
+        // Navigate back to the main activity
+        val mainIntent = Intent(this, MainActivity::class.java)
+        mainIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(mainIntent)
+        finish()
     }
 }
