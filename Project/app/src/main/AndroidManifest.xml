@@ -30,7 +30,7 @@
             android:name=".Gerente.ListaProductosGerente"
             android:exported="false" />
         <activity
-            android:name=".Gerente.PedidosEnEsperaActivity"
+            android:name=".PedidosEnEsperaActivity"
             android:exported="false" />
         <activity
             android:name=".Gerente.PedidosRealizadosActivity"
@@ -44,23 +44,10 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-        <activity
-            android:name=".Gerente.Carrito"
-            android:exported="false" />
-        <activity
-            android:name=".User.CamaraPermisos"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC6ojct53exL4hns6jOAmPUJbVYmRF4Re0" />
-
-        <activity
-            android:name=".Gerente.InfoGerente"
-            android:exported="false" />
-        <activity
-            android:name=".Gerente.DomiciliarioElegido"
-            android:exported="false" />
         <activity
             android:name=".Domiciliario.ListaEntregas"
             android:exported="false" />
@@ -72,18 +59,6 @@
             android:exported="false" />
         <activity
             android:name=".Gerente.GerenteInicio"
-            android:exported="false" />
-        <activity
-            android:name=".User.UserInicio"
-            android:exported="false" />
-        <activity
-            android:name=".User.GpS"
-            android:exported="false" />
-        <activity
-            android:name=".User.ListaCompra"
-            android:exported="false" />
-        <activity
-            android:name=".Gerente.DetallesProducto"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
