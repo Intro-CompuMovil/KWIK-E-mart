@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- item_product.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,33 +6,35 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/courierNameTextView"
+        android:id="@+id/productName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textStyle="bold"
-        android:layout_marginBottom="4dp"/>
+        android:textSize="18sp"
+        android:text="Nombre del Producto" />
 
     <TextView
-        android:id="@+id/calificacionTextView"
+        android:id="@+id/productStock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:layout_marginBottom="4dp"/>
+        android:text="Stock" />
 
     <TextView
-        android:id="@+id/preciopromedioTextView"
+        android:id="@+id/productPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:textAppearanceSmall"/>
+        android:text="Precio" />
 
-    <!-- Boton agregar al carrito -->
+    <TextView
+        android:id="@+id/productShippingCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Costo de Envío" />
+
     <Button
-        android:id="@+id/btnAgregarCarrito"
+        android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Eliminar"
         android:layout_gravity="end"
-        android:text="Agregar a Carrito"
-        android:padding="8dp"
-        />
+        android:layout_marginTop="8dp" />
 </LinearLayout>

@@ -1,44 +1,86 @@
 package co.kwik_e_mart.Gerente
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import co.kwik_e_mart.Productos.Productos
-import co.kwik_e_mart.R
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import androidx.recyclerview.widget.LinearLayoutManager
+import co.kwik_e_mart.DataManager.DataManager
+import co.kwik_e_mart.Productos.Product
+import co.kwik_e_mart.Productos.ProductAdapter
+import co.kwik_e_mart.databinding.ActivityListaProductosGerenteBinding
+import com.google.firebase.auth.FirebaseAuth
 
+class ListaProductosGerente : AppCompatActivity() {
 
-class ListaProductosGerente: AppCompatActivity() {
+    private lateinit var binding: ActivityListaProductosGerenteBinding
+    private lateinit var productAdapter: ProductAdapter
+    private lateinit var gerenteId: String
+    private val dataManager = DataManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_listaproductosgerente)
+        binding = ActivityListaProductosGerenteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        gerenteId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
-        val json = """
-[
-    {"id": 1, "nombre": "Agua Oxigenada", "precio": "4000", "categoria": "Quimicos"},
-    {"id": 2, "nombre": "Jabon Liquido", "precio": "8000", "categoria": "Limpieza"},
-    {"id": 3, "nombre": "Desengrasante", "precio": "15000", "categoria": "Limpieza"},
-    {"id": 4, "nombre": "Limpiador", "precio": "6000", "categoria": "Limpieza"},
-    {"id": 5, "nombre": "Hipoclorito", "precio": "7000", "categoria": "Quimicos"},
-    {"id": 6, "nombre": "Amoniaco", "precio": "3000", "categoria": "Quimicos"},
-    {"id": 7, "nombre": "Valvula", "precio": "30000", "categoria": "Productos"},
-    {"id": 8, "nombre": "Flauta", "precio": "35000", "categoria": "Productos"},
-    {"id": 9, "nombre": "Mezcladora", "precio": "40000", "categoria": "Productos"}
-  ]
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        productAdapter = ProductAdapter(mutableListOf()) { product ->
+            deleteProduct(product)
+        }
+        binding.recyclerView.adapter = productAdapter
 
-"""
+        loadProducts()
 
-        val productosCargador: List<Productos> = Gson().fromJson(json, object : TypeToken<List<Productos>>() {}.type)
-        val listView = findViewById<ListView>(R.id.listViewProd)
-        val nombresProductos = productosCargador.map { it.nombre }
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombresProductos)
-        listView.adapter = adapter
+        binding.fabAddProduct.setOnClickListener {
+            binding.addProductForm.visibility = View.VISIBLE
+        }
 
+        binding.btnCancel.setOnClickListener {
+            binding.addProductForm.visibility = View.GONE
+        }
+
+        binding.btnAddProduct.setOnClickListener {
+            val name = binding.editTextProductName.text.toString()
+            val stock = binding.editTextProductStock.text.toString().toIntOrNull() ?: 0
+            val price = binding.editTextProductPrice.text.toString().toDoubleOrNull() ?: 0.0
+            val shippingCost = binding.editTextProductShippingCost.text.toString().toDoubleOrNull() ?: 0.0
+
+            if (name.isNotEmpty()) {
+                addProduct(Product(name = name, stock = stock, price = price, shippingCost = shippingCost, gerenteId = gerenteId))
+            } else {
+                Toast.makeText(this, "Please enter a product name", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
+    private fun loadProducts() {
+        dataManager.getProductsByGerente(gerenteId, { products ->
+            Log.d("DataManager", "Retrieved products: $products")
+            productAdapter.updateData(products)
+        }, { error ->
+            Log.e("ListaProductosGerente", "Error loading products", error)
+        })
+    }
 
+    private fun addProduct(product: Product) {
+        dataManager.addProduct(product, {
+            Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show()
+            binding.addProductForm.visibility = View.GONE
+            loadProducts() // Recargar productos después de agregar
+        }, { error ->
+            Toast.makeText(this, "Failed to add product: ${error.message}", Toast.LENGTH_SHORT).show()
+        })
+    }
+
+    private fun deleteProduct(product: Product) {
+        dataManager.deleteProduct(product.id, {
+            Toast.makeText(this, "Product deleted successfully", Toast.LENGTH_SHORT).show()
+            loadProducts() // Recargar productos después de eliminar
+        }, { error ->
+            Toast.makeText(this, "Failed to delete product: ${error.message}", Toast.LENGTH_SHORT).show()
+        })
+    }
 }

@@ -18,9 +18,6 @@ class MensajeroList: AppCompatActivity() {
         setContentView(R.layout.activity_gerenteinicio)
 
         recyclerView = findViewById(R.id.mensajeroRecyclerView)
-        dataManager = DataManager(this)
-        loadMensajeros(dataManager.cargarListaMensajeros())
-
     }
 
     private fun loadMensajeros(couriers: List<Mensajeros>) {

@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import co.kwik_e_mart.Domiciliario.MapaEntregaDom
-import co.kwik_e_mart.Gerente.Carrito
-import co.kwik_e_mart.Productos.Productos
+import co.kwik_e_mart.Productos.Product
 import co.kwik_e_mart.R
 
-class NewProductAdapter(private val productList: List<Productos>, private val p1TextView: TextView) :
+class NewProductAdapter(private val productList: List<Product>, private val p1TextView: TextView) :
 
     RecyclerView.Adapter<NewProductAdapter.NewProductViewHolder>() {
 
@@ -35,22 +32,10 @@ class NewProductAdapter(private val productList: List<Productos>, private val p1
         val currentItem = productList[position]
 
         // Asignar los valores del producto a las vistas correspondientes
-        holder.nombreProducto.text = currentItem.nombre
-        holder.precioProducto.text = currentItem.precio.toString()
-        holder.categoriaProducto.text = currentItem.categoria
+        holder.nombreProducto.text = currentItem.name
+        holder.precioProducto.text = currentItem.price.toString()
 
 
-        // Configurar el clic del botón "Agregar al carrito"
-        holder.btnAdd.setOnClickListener {
-            val context = it.context
-            val intent = Intent(context, Carrito::class.java).apply {
-                putExtra("id", currentItem.id)
-                putExtra("nombre", currentItem.nombre)
-                putExtra("precio", currentItem.precio)
-                putExtra("categoria", currentItem.categoria)
-            }
-            context.startActivity(intent)
-        }
     }
     override fun getItemCount() = productList.size
 }

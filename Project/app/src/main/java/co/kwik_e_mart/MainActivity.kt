@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import co.kwik_e_mart.Domiciliario.DomiciliarioInicio
 import co.kwik_e_mart.Gerente.GerenteInicio
-import co.kwik_e_mart.User.UserInicio
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

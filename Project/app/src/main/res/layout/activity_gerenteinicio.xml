@@ -1,55 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:id="@+id/topContainer"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/imageButtonAdminData"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_perfil" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme" />
 
-        <TextView
-            android:id="@+id/textViewDatosAdmin"
+        <LinearLayout
+            android:id="@+id/topContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin info" />
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_below="@id/toolbar">
 
-        <ImageButton
-            android:id="@+id/botonListaProductos"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@android:drawable/star_big_on" />
+            <ImageButton
+                android:id="@+id/imageButtonAdminData"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/ic_perfil" />
 
-        <TextView
-            android:id="@+id/textViewListaProductos"
+            <TextView
+                android:id="@+id/textViewDatosAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Admin info" />
+
+            <ImageButton
+                android:id="@+id/botonListaProductos"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@android:drawable/star_big_on" />
+
+            <TextView
+                android:id="@+id/textViewListaProductos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lista de Productos" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mensajeroRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lista de Productos" />
+            android:layout_below="@id/topContainer"
+            android:layout_marginTop="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    </RelativeLayout>
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_menu" />
 
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mensajeroRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topContainer"
-        android:layout_marginTop="16dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/topContainer" />
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -3,71 +3,123 @@ package co.kwik_e_mart.Gerente
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.MenuItem
 import android.widget.ImageButton
+import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import co.kwik_e_mart.DataManager.DataManager
-import co.kwik_e_mart.Mensajero.MensajeroAdapter
-import co.kwik_e_mart.Mensajero.Mensajeros
+import co.kwik_e_mart.R
 import co.kwik_e_mart.Paquetes.PaqueteAdapter
 import co.kwik_e_mart.Paquetes.Paquetes
-import co.kwik_e_mart.Productos.ProductAdapter
-import co.kwik_e_mart.R
-import co.kwik_e_mart.User.UserInicio
-import co.kwik_e_mart.databinding.ActivityGerenteinicioBinding
-import co.kwik_e_mart.databinding.ActivityUserinicioBinding
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
-class GerenteInicio : AppCompatActivity() {
+class GerenteInicio : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var binding: ActivityGerenteinicioBinding
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var paqueteAdapter: PaqueteAdapter
+    private lateinit var textViewDatosAdmin: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGerenteinicioBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_gerenteinicio)
 
-        val bttnListaProducto = findViewById<ImageButton>(R.id.botonListaProductos)
-        val bttnadminInfo = findViewById<ImageButton>(R.id.imageButtonAdminData)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        val json = """
-[
-    {"id": 1, "producto1": "Agua Oxigenada", "producto2": "Jabon Liquido", "producto3": "Desengrasante"},
-    {"id": 2, "producto1": "Amoniaco", "producto2": "Valvula", "producto3": "Flauta", "producto4": "Mezcladora", "producto5": "Jabon Liquido"},
-    {"id": 3, "producto1": "Desengrasante", "producto2": "Limpiador", "producto3": "Hipoclorito", "producto4": "Amoniaco", "producto5": "Valvula"},
-    {"id": 4, "producto1": "Flauta", "producto2": "Mezcladora", "producto3": "Agua Oxigenada", "producto4": "Jabon Liquido", "producto5": "Desengrasante"},
-    {"id": 5, "producto1": "Limpiador", "producto2": "Hipoclorito", "producto3": "Amoniaco", "producto4": "Valvula", "producto5": "Flauta"},
-    {"id": 6, "producto1": "Mezcladora", "producto2": "Agua Oxigenada", "producto3": "Jabon Liquido", "producto4": "Desengrasante", "producto5": "Limpiador"},
-    {"id": 7, "producto1": "Hipoclorito", "producto2": "Amoniaco", "producto3": "Valvula", "producto4": "Flauta", "producto5": "Mezcladora"},
-    {"id": 8, "producto1": "Desengrasante", "producto2": "Limpiador", "producto3": "Hipoclorito", "producto4": "Amoniaco", "producto5": "Mezcladora"},
-    {"id": 9, "producto1": "Agua Oxigenada", "producto2": "Jabon Liquido", "producto3": "Flauta", "producto4": "Mezcladora", "producto5": "Limpiador"},
-    {"id": 10, "producto1": "Amoniaco", "producto2": "Desengrasante", "producto3": "Hipoclorito", "producto4": "Valvula", "producto5": "Flauta"},
-]
-"""
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
-        val paquetesCargador: List<Paquetes> = Gson().fromJson(json, object : TypeToken<List<Paquetes>>() {}.type)
-
-        Log.d("GerenteInicio", "Tamaño de la lista de Paquetes cargados: ${paquetesCargador.size}")
+        navView.setNavigationItemSelectedListener(this)
 
         val recyclerView = findViewById<RecyclerView>(R.id.mensajeroRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val adapter = PaqueteAdapter(paquetesCargador.toMutableList())
-        recyclerView.adapter = adapter
+        paqueteAdapter = PaqueteAdapter(mutableListOf())
+        recyclerView.adapter = paqueteAdapter
 
-        bttnListaProducto.setOnClickListener{
+        textViewDatosAdmin = findViewById(R.id.textViewDatosAdmin)
+        loadAdminData()
+
+        val bttnListaProducto = findViewById<ImageButton>(R.id.botonListaProductos)
+        val bttnadminInfo = findViewById<ImageButton>(R.id.imageButtonAdminData)
+
+        bttnListaProducto.setOnClickListener {
             val intent = Intent(this, ListaProductosGerente::class.java)
             startActivity(intent)
         }
 
-        bttnadminInfo.setOnClickListener{
+        bttnadminInfo.setOnClickListener {
             val intent = Intent(this, InfoGerente::class.java)
             startActivity(intent)
         }
-
     }
 
+    private fun loadAdminData() {
+        val database = FirebaseDatabase.getInstance().reference
+        database.child("adminData").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val adminData = snapshot.getValue(String::class.java) ?: "Admin info"
+                textViewDatosAdmin.text = adminData
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("GerenteInicio", "Error loading admin data", error.toException())
+            }
+        })
+
+        database.child("paquetes").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val paquetesList = mutableListOf<Paquetes>()
+                for (paqueteSnapshot in snapshot.children) {
+                    val paquete = paqueteSnapshot.getValue(Paquetes::class.java)
+                    if (paquete != null) {
+                        paquetesList.add(paquete)
+                    }
+                }
+                paqueteAdapter.updateData(paquetesList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("GerenteInicio", "Error loading paquetes", error.toException())
+            }
+        })
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_profile -> {
+                startActivity(Intent(this, InfoGerente::class.java))
+            }
+            R.id.nav_stock -> {
+                startActivity(Intent(this, StockActivity::class.java))
+            }
+            R.id.nav_orders_completed -> {
+                startActivity(Intent(this, PedidosRealizadosActivity::class.java))
+            }
+            R.id.nav_orders_pending -> {
+                startActivity(Intent(this, PedidosEnEsperaActivity::class.java))
+            }
+        }
+        drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 }

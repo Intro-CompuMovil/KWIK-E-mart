@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">KWIK-E-mart</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="app_name">KWIK-E-Mart</string>
     <string name="enter_address">Enter Address</string>
-    <string name="search">Search</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="admin_info">Información del admin</string>
+    <string name="lista_productos">Lista de productos</string>
+    <string name="perfil">Perfil</string>
+    <string name="stock">Stock</string>
+    <string name="pedidos_realizados">Pedidos realizados</string>
+    <string name="pedidos_en_espera">Pedidos en espera</string>
+    <string name="add_product">Agregar Producto</string>
 </resources>

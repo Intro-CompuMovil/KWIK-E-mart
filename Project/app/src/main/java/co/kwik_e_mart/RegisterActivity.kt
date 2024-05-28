@@ -11,12 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import co.kwik_e_mart.Gerente.GerenteInicio
 import co.kwik_e_mart.Domiciliario.DomiciliarioInicio
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var rtdb: FirebaseDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class RegisterActivity : AppCompatActivity() {
         // Initialize Firebase
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        rtdb = FirebaseDatabase.getInstance()
 
         val usernameEditText = findViewById<EditText>(R.id.editTextRegisterUsername)
         val emailEditText = findViewById<EditText>(R.id.editTextRegisterEmail)
@@ -63,14 +66,24 @@ class RegisterActivity : AppCompatActivity() {
                     )
 
                     if (userId != null) {
+                        // Guardar información adicional en Firestore
                         db.collection("users").document(userId).set(userMap)
                             .addOnSuccessListener {
-                                Log.d("Register", "DocumentSnapshot successfully written!")
+                                Log.d("Register", "DocumentSnapshot successfully written in Firestore!")
+                            }
+                            .addOnFailureListener { e ->
+                                Log.w("Register", "Error writing document in Firestore", e)
+                            }
+
+                        // Guardar información adicional en Realtime Database
+                        rtdb.getReference("users").child(userId).setValue(userMap)
+                            .addOnSuccessListener {
+                                Log.d("Register", "DocumentSnapshot successfully written in Realtime Database!")
                                 Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show()
                                 navigateToHome(userType)
                             }
                             .addOnFailureListener { e ->
-                                Log.w("Register", "Error writing document", e)
+                                Log.w("Register", "Error writing document in Realtime Database", e)
                                 Toast.makeText(this, "Registration failed.", Toast.LENGTH_SHORT).show()
                             }
                     }

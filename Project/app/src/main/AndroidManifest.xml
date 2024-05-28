@@ -5,11 +5,10 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
 
-    <!-- Permissions of Location -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- Permissions of Location -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -25,17 +24,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KWIKEmart"
-        tools:targetApi="31"
-        android:usesCleartextTraffic="true">
-
-
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".Gerente.ListaProductosGerente"
+            android:exported="false" />
+        <activity
+            android:name=".Gerente.PedidosEnEsperaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Gerente.PedidosRealizadosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Gerente.StockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Gerente.InfoGerente"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".Gerente.Carrito"
             android:exported="false" />
-
         <activity
             android:name=".User.CamaraPermisos"
             android:exported="false" />
@@ -47,34 +58,24 @@
         <activity
             android:name=".Gerente.InfoGerente"
             android:exported="false" />
-
-        <activity
-            android:name=".Gerente.ListaProductosGerente"
-            android:exported="false" />
-
         <activity
             android:name=".Gerente.DomiciliarioElegido"
             android:exported="false" />
-
         <activity
             android:name=".Domiciliario.ListaEntregas"
             android:exported="false" />
-
-        <activity android:name=".Domiciliario.MapaEntregaDom"
+        <activity
+            android:name=".Domiciliario.MapaEntregaDom"
             android:exported="false" />
-
         <activity
             android:name=".Domiciliario.DomiciliarioInicio"
             android:exported="false" />
-
         <activity
             android:name=".Gerente.GerenteInicio"
             android:exported="false" />
-
         <activity
             android:name=".User.UserInicio"
             android:exported="false" />
-
         <activity
             android:name=".User.GpS"
             android:exported="false" />

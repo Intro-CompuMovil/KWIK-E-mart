@@ -17,6 +17,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -37,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -68,4 +70,7 @@ dependencies {
     implementation("org.osmdroid:osmdroid-mapsforge:6.1.18")
     implementation("org.osmdroid:osmdroid-wms:6.1.18")
     implementation("com.github.MKergall:osmbonuspack:6.6.0")
+    //
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 }
